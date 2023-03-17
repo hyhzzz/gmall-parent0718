@@ -1,7 +1,22 @@
 package com.atguigu.gmall.common.config;
 
+/**
+ * ClassName: Knife4jConfig
+ * Package: com.atguigu.gmall.common.config
+ * Description:
+ * Swagger2配置信息
+ *
+ * @Author coderhyh
+ * @Create 2023/3/17 23:30
+ * @Version 1.0
+ */
+
+import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -11,19 +26,19 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.service.Parameter;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Swagger2配置信息
- */
-//@Configuration
-//@EnableSwagger2
-public class Swagger2Config {
+@Configuration
+@EnableSwagger2
+@EnableKnife4j
+@Import(BeanValidatorPluginsConfiguration.class)
+public class Knife4jConfig {
 
     @Bean
-    public Docket webApiConfig(){
+    public Docket webApiConfig() {
 
         //添加head参数start
         List<Parameter> pars = new ArrayList<>();
@@ -38,7 +53,7 @@ public class Swagger2Config {
         pars.add(tokenPar.build());
 
         ParameterBuilder tmpPar = new ParameterBuilder();
-                tmpPar.name("userTempId")
+        tmpPar.name("userTempId")
                 .description("临时用户ID")
                 .defaultValue("1")
                 .modelRef(new ModelRef("string"))
@@ -62,7 +77,7 @@ public class Swagger2Config {
     }
 
     @Bean
-    public Docket adminApiConfig(){
+    public Docket adminApiConfig() {
 
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("adminApi")
@@ -74,7 +89,7 @@ public class Swagger2Config {
 
     }
 
-    private ApiInfo webApiInfo(){
+    private ApiInfo webApiInfo() {
 
         return new ApiInfoBuilder()
                 .title("网站-API文档")
@@ -84,7 +99,7 @@ public class Swagger2Config {
                 .build();
     }
 
-    private ApiInfo adminApiInfo(){
+    private ApiInfo adminApiInfo() {
 
         return new ApiInfoBuilder()
                 .title("后台管理系统-API文档")
@@ -93,6 +108,4 @@ public class Swagger2Config {
                 .contact(new Contact("Helen", "http://atguigu.com", "55317332@qq.com"))
                 .build();
     }
-
-
 }

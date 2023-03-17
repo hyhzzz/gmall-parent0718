@@ -14,7 +14,6 @@
 
     <description>微服务实体类模块</description>
 
-
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -40,10 +39,12 @@
             <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
             <scope>provided </scope>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-mongodb</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>

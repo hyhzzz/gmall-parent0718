@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * MybatisPlus配置类
  *
  */
-@EnableTransactionManagement
+@EnableTransactionManagement //把服务注册到注册中心
 @Configuration
 @MapperScan("com.atguigu.gmall.*.mapper") //统一配置持久层的包扫描
 public class MybatisPlusConfig {

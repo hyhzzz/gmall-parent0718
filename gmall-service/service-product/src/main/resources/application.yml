@@ -2,7 +2,7 @@ server:
   port: 8206
 spring:
   application:
-    name: service-product
+    name: service-product #服务名称
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
